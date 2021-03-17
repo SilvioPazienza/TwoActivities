@@ -18,7 +18,7 @@ class ThirdActivity : AppCompatActivity() {
         title = TAG
 
         val data = intent.getDoubleExtra("main_activity.data", 0.0)
-        returnValue = data * data * data
+        returnValue = data * 2.0
         textView.text = "$data -> $returnValue"
 
         Log.v(TAG, "OnCreate")
