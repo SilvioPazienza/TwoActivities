@@ -10,22 +10,24 @@ import kotlinx.android.synthetic.main.activity_second.*
 
 class ThirdActivity : AppCompatActivity() {
     val TAG = "ThirdActivity"
-    var returnvalue = 0.0
+    var returnValue = 0.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_third)
-        title = TAG
-        val data = intent.getDoubleExtra("main_activity.data", 0.0)
-        returnvalue = data*2.0
-        textView.text = "$data => $returnvalue"
+        setContentView(R.layout.activity_third2)
 
-        Log.v(TAG, "onCreate third activity")
+        title = TAG
+
+        val data = intent.getDoubleExtra("main_activity.data", 0.0)
+        returnValue = data * 2.0
+        textView.text = "$data -> $returnValue"
+
+        Log.v(TAG, "OnCreate")
     }
 
-    fun closeActivity3(v: View) {
+    fun closeActivity(v: View) {
         var resultIntent = Intent()
-        resultIntent.putExtra("result", returnvalue)
-        setResult(Activity.RESULT_OK, resultIntent) //impostiamo il rusiltato che la third activity tornerà al chiamante
+        resultIntent.putExtra("result", returnValue)
+        setResult(Activity.RESULT_OK, resultIntent)
         finish()
     }
 }
