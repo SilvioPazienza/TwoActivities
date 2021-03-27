@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TwoActivities</string>
+    <string name="return_main_activity">Return main activity</string>
+    <string name="return_to_main_activity">Return to Main Activity</string>
 </resources>

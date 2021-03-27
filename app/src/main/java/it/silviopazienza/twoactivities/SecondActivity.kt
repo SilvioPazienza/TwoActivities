@@ -17,7 +17,7 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
         title = TAG
         //recuperiamo il valore dall'intent e lo asseniamo alla textview
-        val data = intent.getDoubleExtra("main_activity_data", 0.0) //secondo valore di default nel caso la chiave non contenga nulla
+        val data = intent.getDoubleExtra("main_activity.data", 0.0) //secondo valore di default nel caso la chiave non contenga nulla
         returnvalue = data*data
         textView.text = "$data => $returnvalue"
 
