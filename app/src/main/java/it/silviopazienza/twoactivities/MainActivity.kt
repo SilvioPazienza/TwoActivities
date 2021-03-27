@@ -1,5 +1,6 @@
 package it.silviopazienza.twoactivities
 
+import FourthActivity
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -38,13 +39,26 @@ class MainActivity : AppCompatActivity() { //gestione dell'evento relativa all'i
     }
 
     fun openThirdActivity(v: View) {
-        Log.v(TAG, "onClick")
+        Log.v(TAG, "onClick third button")
         val intent = Intent(this@MainActivity, ThirdActivity::class.java)
         val msg = editText.text.toString()
         try {
             val num = msg.toDouble()
             intent.putExtra("main_activity.data", num)
             startActivityForResult(intent, 2)
+        } catch (e: NumberFormatException) {
+            Toast.makeText(applicationContext, "$msg isn't a double", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun openFourthActivity(v: View) {
+        Log.v(TAG, "onClick")
+        val intent = Intent(this@MainActivity, FourthActivity::class.java)
+        val msg = editText.text.toString()
+        try {
+            val num = msg.toDouble()
+            intent.putExtra("main_activity.data", num)
+            startActivityForResult(intent, 3)
         } catch (e: NumberFormatException) {
             Toast.makeText(applicationContext, "$msg isn't a double", Toast.LENGTH_SHORT).show()
         }
@@ -57,6 +71,9 @@ class MainActivity : AppCompatActivity() { //gestione dell'evento relativa all'i
             //con setText assegno direttamente una stringa
             editText.setText("$returnValue")//al textview andiamo a scrivere quello che abbiamo letto dall'intent
         } else if ((requestCode == 2) and (resultCode == Activity.RESULT_OK)) {
+            val returnValue = data?.getDoubleExtra("result", 0.0)
+            editText.setText("$returnValue")
+        } else if ((requestCode == 3) and (resultCode == Activity.RESULT_OK)) {
             val returnValue = data?.getDoubleExtra("result", 0.0)
             editText.setText("$returnValue")
         }
